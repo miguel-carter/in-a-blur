@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <title>in-a-blur</title>
+</head>
+<body>
+  <div class="flex-wrapper">
+    <div class="container">
+      <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="https://bulma.io">
+            <img src="https://bulma.io/images/bulma-logo.png" alt="in-a-blur only requirement is that you type." width="112" height="28">
+          </a>
+        </div>
+      </nav>
+
+      <section class="section">
+        <div class="columns">
+          <div class="column">
+            <div class="notification" id="notification">
+              <button class="delete"></button>
+              Welcome to <strong>in-a-blur</strong>, to start just click the textarea and begin typing.
+              You will notice that only the first word is visible, this is intended to prevent you from over thinking.
+              Once completed just press <strong>submit</strong> and your text will be saved to your local memory where
+              you can view it in it's entirety.
+            </div>
+            <div class="card">
+              <header class="card-header">
+                <p class="card-header-title">
+                  Card header
+                </p>
+                <button class="card-header-icon" aria-label="more options">
+                  <span class="icon">
+                    <i class="las la-angle-down" aria-hidden="true"></i>
+                  </span>
+                </button>
+              </header>
+              <div class="card-content">
+                <div class="content">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="column">
+            <textarea class="textarea is-medium mb-2" id="textarea" rows="10" placeholder="e.g. Dear Diary"></textarea>
+            <div class="columns is-mobile">
+              <div class="column">
+                <button class="button is-outlined is-fullwidth" id="clear">clear</button>
+              </div>
+              <div class="column">
+                <button class="button is-outlined is-fullwidth" id="submit">submit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+            <strong>in-a-blur</strong> by <a href="https://jgthms.com">Miguel Carter</a>. The source code is licensed
+            <a href="https://unlicense.org/">Unlicense</a>.
+          </p>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <script src="assets/js/script.js"></script>
+</body>
+</html>
