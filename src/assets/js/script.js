@@ -11,16 +11,25 @@ function init() {
     submit: document.getElementById('submit')
   };
 
-  listeners(elements);
+  const db = function () {
+    const localStorage = window.localStorage
+    return {
+      set: function(key, value) { localStorage.setItem(key, value); },
+      get: function(key) { return localStorage.getItem(key) },
+      remove: function(key) { localStorage.removeItem(key) },
+      clear: function() { localStorage.clear() }
+    }
+  }();
+
+  listeners(elements, db);
 }
 
-function listeners(elements) {
+function listeners(elements,db) {
   const { notif, input, textarea, clear, submit } = elements;
-    
   notif.addEventListener('click', notificationHandler);
   input.addEventListener('keyup', inputHandler(textarea));
   clear.addEventListener('click', clearHandler(textarea));
-  // submit.addEventListener('click', submitHandler);
+  submit.addEventListener('click', submitHandler(textarea, db));
 };
 
 function notificationHandler(e) {
@@ -39,6 +48,13 @@ function inputHandler(textarea) {
 
 function clearHandler(textarea) {
   return function (e) {
+    textarea.value = '';
+  }
+}
+
+function submitHandler(textarea, db) {
+  return function (e) {
+    db.set(new Date().toLocaleString(), textarea.value);
     textarea.value = '';
   }
 }
