@@ -1,0 +1,31 @@
+html {
+    background: #1A535C;
+}
+
+.container {
+    height: 80%;
+}
+
+.notification, .card {
+    filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
+}
+
+#clear {
+    opacity: 0.7;
+    color: #333;
+    border: none;
+}
+
+
+#submit {
+    color: #333;
+    border: none;
+}
+
+.blur {
+    filter: blur(4px);
+}
+
+.textarea {
+    
+}
