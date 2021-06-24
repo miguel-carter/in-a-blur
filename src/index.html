@@ -24,7 +24,7 @@
         <div class="columns">
           <div class="column">
             <div class="notification" id="notification">
-              <button class="delete"></button>
+              <button class="delete" id="delete"></button>
               Welcome to <strong>in-a-blur</strong>, to start just click the textarea and begin typing.
               You will notice that only the first word is visible, this is intended to prevent you from over thinking.
               Once completed just press <strong>submit</strong> and your text will be saved to your local memory where
@@ -48,7 +48,8 @@
             </div>
           </div>
           <div class="column">
-            <textarea class="textarea is-medium mb-2" id="textarea" rows="10" placeholder="e.g. Dear Diary"></textarea>
+            <textarea class="textarea is-medium mb-2" id="textarea" disabled rows="10" placeholder="e.g. This is about to get blurry."></textarea>
+            <input type="text" class="input is-medium mb-2" id="input">
             <div class="columns is-mobile">
               <div class="column">
                 <button class="button is-outlined is-fullwidth" id="clear">clear</button>
