@@ -12,20 +12,17 @@
 <body>
   <div class="wrapper">
     <div class="container">
-      
-
       <section class="section">
+        <div class="title has-text-white">in-a-blur</div>
+        <div class="notification" id="notification">
+          <button class="delete" id="delete"></button>
+          Welcome to <strong>in-a-blur</strong>, just begin by typing in the glowing box. Don't
+          be afraid of mistakes, this is intended to capture your unaltered stream of thought.
+        </div>
         <div class="columns">
-          <div class="column">
-            <div class="notification" id="notification">
-              <button class="delete" id="delete"></button>
-              Welcome to <strong>in-a-blur</strong>, to start just click the textarea and begin typing.
-              You will notice that only the first word is visible, this is intended to prevent you from over thinking.
-              Once completed just press <strong>submit</strong> and your text will be saved to your local memory where
-              you can view it in it's entirety.
-            </div>
-            <div class="card">
-              <header class="card-header">
+          <div class="column cards">
+            <div class="card is-hidden mb-2" id="card">
+              <header class="card-header-title has-text-white">
                 <p class="card-header-title">
                   Card header
                 </p>
@@ -35,15 +32,13 @@
                   </span>
                 </button>
               </header>
-              <div class="card-content">
-                <div class="content">
-                </div>
+              <div class="card-content pt-0">
               </div>
             </div>
           </div>
           <div class="column">
             <textarea class="textarea is-medium mb-2" id="textarea" disabled rows="10" placeholder="e.g. This is about to get blurry."></textarea>
-            <input type="text" class="input is-medium mb-2" id="input">
+            <input type="text" class="input is-medium mb-2 has-text-centered" id="input">
             <div class="columns is-mobile">
               <div class="column">
                 <button class="button is-outlined is-fullwidth" id="clear">clear</button>
@@ -56,6 +51,14 @@
         </div>
       </section>
     </div>
+    <footer>
+      <div class="has-text-centered">
+        <p>
+          <strong class="has-text-white">in-a-blur</strong> by <a href="https://github.com/miguel-carter">Miguel Carter</a>. The source code is licensed
+          <a href="https://unlicense.org/">unlicense</a>.
+        </p>
+      </div>
+    </footer>
   </div>
   <script src="assets/js/script.js"></script>
 </body>

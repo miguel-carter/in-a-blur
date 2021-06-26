@@ -2,24 +2,39 @@ html {
     background: #1A535C;
 }
 
-.container {
-    height: 80%;
+.cards {
+    margin-top: 12px;
+    padding-top: 0;
+    max-height: 70vh;
+    overflow: hidden;
+    overflow-y: scroll;
+    filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
+}
+
+.column::-webkit-scrollbar {
+    display: none;
 }
 
 .notification, .card {
-    filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
+    color: #f4f4f4;
+    border: none;
+    background: #1A535C !important;
+    border: 1px solid #40abbb !important;
 }
 
 #clear {
     opacity: 0.7;
-    color: #333;
+    color: #f4f4f4;
     border: none;
+    background: #1A535C !important;
+    border: 1px solid #40abbb !important;
 }
 
-
 #submit {
-    color: #333;
+    color: #f4f4f4;
     border: none;
+    background: #1A535C !important;
+    border: 1px solid #40abbb !important;
 }
 
 .blur {
@@ -27,5 +42,38 @@ html {
 }
 
 .textarea {
-    
+    background: #1A535C !important;
+    border: 1px solid #40abbb !important;
 }
+
+.textarea:hover {
+    cursor: pointer;
+}
+
+@keyframes glowing {
+    0% {
+      background-color: #1A535C;
+      box-shadow: 0 0 3px #40abbb;
+    }
+    50% {
+      background-color: #1A535C;
+      box-shadow: 0 0 10px #40abbb;
+    }
+    100% {
+      background-color: #1A535C;
+      box-shadow: 0 0 3px #40abbb;
+    }
+  }
+
+.input {
+animation: glowing 1300ms infinite;
+color: #f4f4f4;
+border: none;
+}
+
+footer {
+    
+    background:#1A535C;
+    color: #f4f4f4;
+}
+

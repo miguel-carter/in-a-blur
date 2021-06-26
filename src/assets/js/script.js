@@ -8,7 +8,8 @@ function init() {
     textarea: document.getElementById('textarea'),
     input: document.getElementById('input'),
     clear: document.getElementById('clear'),
-    submit: document.getElementById('submit')
+    submit: document.getElementById('submit'),
+    card: document.getElementById('card'),
   };
 
   const db = function () {
@@ -17,10 +18,12 @@ function init() {
       set: function(key, value) { localStorage.setItem(key, value); },
       get: function(key) { return localStorage.getItem(key) },
       remove: function(key) { localStorage.removeItem(key) },
-      clear: function() { localStorage.clear() }
+      clear: function() { localStorage.clear() },
+      all : localStorage,
     }
   }();
 
+  initialState(elements, db);
   listeners(elements, db);
 }
 
@@ -41,7 +44,8 @@ function inputHandler(textarea) {
     if (e.code !== 'Space') return;
     const inputValue = e.path[0].value;
     if (inputValue === ' ') return e.path[0].value = '';
-    textarea.value = `${textarea.value} ${inputValue}`;
+    textarea.value = `${textarea.value}${inputValue}`;
+    textarea.classList.add('blur')
     e.path[0].value = '';
   }
 }
@@ -49,12 +53,29 @@ function inputHandler(textarea) {
 function clearHandler(textarea) {
   return function (e) {
     textarea.value = '';
+    textarea.classList.remove('blur');
   }
 }
 
 function submitHandler(textarea, db) {
   return function (e) {
+    if (textarea.value.length < 1) return;
     db.set(new Date().toLocaleString(), textarea.value);
     textarea.value = '';
+    textarea.classList.remove('blur');
   }
+}
+
+function initialState(elements, db) {
+  if (!db.all.length) return;
+  const { card } = elements;
+  const column = card.parentElement;
+  Object.keys(db.all).forEach(p => {
+    const newCard = card.cloneNode(true);
+    console.dir(newCard)
+    newCard.classList.remove('is-hidden')
+    newCard.children[0].innerText = p;
+    newCard.children[1].innerText = db.all[p];
+    column.appendChild(newCard);
+  });
 }
