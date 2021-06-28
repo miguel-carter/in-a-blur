@@ -28,11 +28,11 @@ function init() {
 }
 
 function listeners(elements,db) {
-  const { notif, input, textarea, clear, submit } = elements;
+  const { notif, input, textarea, clear, submit, card } = elements;
   notif.addEventListener('click', notificationHandler);
   input.addEventListener('keyup', inputHandler(textarea));
   clear.addEventListener('click', clearHandler(textarea));
-  submit.addEventListener('click', submitHandler(textarea, db));
+  submit.addEventListener('click', submitHandler(textarea, db, card));
 };
 
 function notificationHandler(e) {
@@ -51,18 +51,33 @@ function inputHandler(textarea) {
 }
 
 function clearHandler(textarea) {
-  return function (e) {
+  return function () {
     textarea.value = '';
     textarea.classList.remove('blur');
   }
 }
 
-function submitHandler(textarea, db) {
-  return function (e) {
+function submitHandler(textarea, db, card) {
+  return function () {
     if (textarea.value.length < 1) return;
     db.set(new Date().toLocaleString(), textarea.value);
     textarea.value = '';
     textarea.classList.remove('blur');
+
+    const column = card.parentElement;
+    const { children } = column;
+
+    for (let i = children.length - 1; i >= 1; --i) {
+      children[i].remove();
+    }
+  
+    Object.keys(db.all).forEach(p => {
+      const newCard = card.cloneNode(true);
+      newCard.classList.remove('is-hidden');
+      newCard.children[0].innerText = p;
+      newCard.children[1].innerText = db.all[p];
+      column.appendChild(newCard);
+    });
   }
 }
 
@@ -72,10 +87,10 @@ function initialState(elements, db) {
   const column = card.parentElement;
   Object.keys(db.all).forEach(p => {
     const newCard = card.cloneNode(true);
-    console.dir(newCard)
     newCard.classList.remove('is-hidden')
     newCard.children[0].innerText = p;
     newCard.children[1].innerText = db.all[p];
     column.appendChild(newCard);
   });
 }
+  
